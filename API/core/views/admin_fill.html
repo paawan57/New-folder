@@ -1,0 +1,223 @@
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Bdtask - Bootstrap Admin Template Dashboard</title>
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/dist/img/ico/favicon.png" type="image/x-icon">
+        <link rel="apple-touch-icon" type="image/x-icon" href="assets/dist/img/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="assets/dist/img/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="assets/dist/img/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="assets/dist/img/ico/apple-touch-icon-144-precomposed.png">
+
+        <!-- Bootstrap -->
+         
+        
+        
+
+        <!-- Bootstrap -->
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">    
+        <link href="assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" type="text/css">
+        
+        <link href="assets/dist/css/styleBD.css" rel="stylesheet" type="text/css">
+        <!-- Theme style rtl -->
+        <!--<link href="assets/dist/css/styleBD-rtl.css" rel="stylesheet" type="text/css"/>-->
+    
+        <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <!-- Bootstrap rtl -->
+        <!--<link href="assets/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet" type="text/css"/>-->
+        <!-- Pe-icon-7-stroke -->
+        <link href="assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" type="text/css">
+        <!-- style css -->
+        <link href="assets/dist/css/styleBD.css" rel="stylesheet" type="text/css">
+        <!-- Theme style rtl -->
+        <!--<link href="assets/dist/css/styleBD-rtl.css" rel="stylesheet" type="text/css"/>-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function() {
+
+        var iCnt = 0;
+        // CREATE A "DIV" ELEMENT AND DESIGN IT USING jQuery ".css()" CLASS.
+        var container = $(document.createElement('div')).css({
+            padding: '5px', margin: '20px', width: '170px', border: '1px dashed',
+            borderTopColor: '#999', borderBottomColor: '#999',
+            borderLeftColor: '#999', borderRightColor: '#999'
+        });
+
+        $('#btAdd').click(function() {
+            if (iCnt <= 19) {
+
+                iCnt = iCnt + 1;
+
+                // ADD TEXTBOX.
+                $(container).append('<input type=text name=scheme'+iCnt+' placeholder=Scheme'+iCnt+' class="input" id=tb' + iCnt + ' ' +
+                    ' />');
+                  $(container).append('<input type=text name=amount'+iCnt+' placeholder=Amount class="input" id=tb' + iCnt + ' ' +
+                    ' /><br><br>');
+                 $(container).append('<input type=hidden  name=no_of_schemes value=' +iCnt+ '  />');
+
+                // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
+                if (iCnt == 1) {
+                    var divSubmit = $(document.createElement('div'));
+                    $(divSubmit).append('<input type=submit class="bt"' + 
+                        'onclick="GetTextValue()"' + 
+                            'id=btSubmit value=Submit />');
+                }
+
+                // ADD BOTH THE DIV ELEMENTS TO THE "main" CONTAINER.
+                $('#main').after(container, divSubmit);
+            }
+            // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
+            // (20 IS THE LIMIT WE HAVE SET)
+            else {      
+                $(container).append('<label>Reached the limit</label>'); 
+                $('#btAdd').attr('class', 'bt-disable'); 
+                $('#btAdd').attr('disabled', 'disabled');
+            }
+        });
+
+        // REMOVE ONE ELEMENT PER CLICK.
+        $('#btRemove').click(function() {
+            if (iCnt != 0) { $('#tb' + iCnt).remove();$('#tb' + iCnt).remove(); iCnt = iCnt - 1;
+                           
+                            $(container).append('<input type=hidden  name=no_of_schemes value=' +iCnt+ '  />');
+                           
+                           }
+        
+            if (iCnt == 0) { 
+                $(container)
+                    .empty() 
+                    .remove(); 
+
+                $('#btSubmit').remove(); 
+                $('#btAdd')
+                    .removeAttr('disabled') 
+                    .attr('class', 'bt');
+            }
+        });
+
+        // REMOVE ALL THE ELEMENTS IN THE CONTAINER.
+        $('#btRemoveAll').click(function() {
+            $(container)
+                .empty()
+                .remove(); 
+
+            $('#btSubmit').remove(); 
+            iCnt = 0; 
+             $(container).append('<input type=hidden  name=no_of_schemes value=' +iCnt+ '  />');
+            
+            $('#btAdd')
+                .removeAttr('disabled') 
+                .attr('class', 'bt');
+        });
+    });
+
+    // PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
+    var divValue, values = '';
+
+    function GetTextValue() {
+        $(divValue) 
+            .empty() 
+            .remove(); 
+        
+        values = '';
+
+        $('.input').each(function() {
+            divValue = $(document.createElement('div')).css({
+                padding:'5px', width:'200px'
+            });
+            values += this.value + '<br />'
+        });
+
+        $(divValue).append('<p><b>Your selected values</b></p>' + values);
+        $('body').append(divValue);
+    }
+   
+
+    
+    
+    
+    </script>
+    </head>
+    
+    <body>
+        
+        
+        
+        <!-- Content Wrapper -->
+        <div class="login-wrapper">
+            <div class="back-link">
+                <a href="/" class="btn btn-success">Back to Dashboard</a>
+            </div>
+            <div class="container-center lg">
+                <div class="panel panel-bd">
+                    <div class="panel-heading">
+                        <div class="view-header">
+                            <div class="header-icon">
+                                <i class="glyphicon glyphicon-list-alt"></i>
+                            </div>
+                            <div class="header-title">
+                                <h3>ADMIN FILL FORM</h3>
+                                <small><strong>Fill Your Data</strong></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <form action="http://127.0.0.1:8081/User_admin_fill" method="POST" id="loginForm" novalidate="">
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label>TYPE</label>
+                                    <select class="form-control" id="exampleSelect1" name="type">
+                                                <option>Education</option>
+                                                <option>Bussiness</option>
+                                                <option>Sports</option>
+                                                <option>Housing</option>
+                                                <option>Farming</option>
+												
+                                            </select>
+                                    <span class="help-block small">Branch of test</span>
+                                </div>
+                               
+                                <div class="form-group col-lg-12">
+                                    <label>Website id</label>
+                                     <input type="text" value="" id="w_id" class="form-control" name="w_id">
+                                    <span class="help-block small"></span>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <label>Website Name</label>
+                                     <input type="text" value="" id="w_name" class="form-control" name="w_name">
+                                    <span class="help-block small"></span>
+                                </div>
+                               <div class="form-group col-lg-12">
+                                    <label>Maximum Registrations</label>
+                                     <input type="text" value="" id="max_reg" class="form-control" name="max_reg">
+                                    <span class="help-block small"></span>
+                                </div>
+                               
+                                <div class="form-group col-lg-6">
+                                     <div id="main">
+        <input type="button" id="btAdd" value="Add Scheme" class="bt" />
+        <input type="button" id="btRemove" value="Remove Scheme" class="bt" />
+        <input type="button" id="btRemoveAll" value="Remove All" class="bt" /><br />
+                           </div>
+                                </div>
+								
+
+                            </div>
+                            
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- jQuery -->
+        <script src="assets/plugins/jQuery/jquery-1.12.4.min.js" type="text/javascript"></script>
+        <!-- bootstrap js -->
+        <script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    
+</body></html>

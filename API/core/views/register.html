@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Bdtask - Bootstrap Admin Template Dashboard</title>
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/dist/img/ico/favicon.png" type="image/x-icon">
+        <link rel="apple-touch-icon" type="image/x-icon" href="assets/dist/img/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="assets/dist/img/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="assets/dist/img/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="assets/dist/img/ico/apple-touch-icon-144-precomposed.png">
+
+        <!-- Bootstrap -->
+         
+        
+        
+
+        <!-- Bootstrap -->
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">    
+        <link href="assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" type="text/css">
+        
+        <link href="assets/dist/css/styleBD.css" rel="stylesheet" type="text/css">
+        <!-- Theme style rtl -->
+        <!--<link href="assets/dist/css/styleBD-rtl.css" rel="stylesheet" type="text/css"/>-->
+    
+        <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap rtl -->
+        <!--<link href="assets/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet" type="text/css"/>-->
+        <!-- Pe-icon-7-stroke -->
+        <link href="assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" type="text/css"/>
+        <!-- style css -->
+        <link href="assets/dist/css/styleBD.css" rel="stylesheet" type="text/css"/>
+        <!-- Theme style rtl -->
+        <!--<link href="assets/dist/css/styleBD-rtl.css" rel="stylesheet" type="text/css"/>-->
+    </head>
+    <body>
+        <!-- Content Wrapper -->
+        <div class="login-wrapper">
+            <div class="back-link">
+                <a href="lockscreen" class="btn btn-success">ADMIN LOGIN</a>
+            </div>
+            <div class="container-center lg">
+                <div class="panel panel-bd">
+                    <div class="panel-heading">
+                        <div class="view-header">
+                            <div class="header-icon">
+                                <i class="pe-7s-unlock"></i>
+                            </div>
+                            <div class="header-title">
+                                <h3>Register</h3>
+                                <small><strong>Please enter your data to register.</strong></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <form action="/User_register" method="post" id="loginForm" novalidate>
+                            <div class="row">
+							    
+                               <div class="form-group col-lg-6">
+ <label>aadharID:</label>
+  <input type="text" id="ai" class="form-control" name="Aadharno">
+  </div>
+  <br>
+  <div class="form-group col-lg-6">
+  <label>name</label>
+  <input type="text" id="n" class="form-control" name="Name">
+  </div>
+  <br>
+  <div class="form-group col-lg-6">
+  <label>father name</label>
+  <input type="text" id="fn" class="form-control" name="fathername">
+  </div>
+  <br>
+  <div class="form-group col-lg-6">
+  <label>gender</label>
+  <input type="text" id="gen" class="form-control" name="gender">
+  </div>
+  <br>
+  <div class="form-group col-lg-6">
+  <label>dob</label>
+  <input type="text" id="dob" class="form-control" name="dob">
+  </div>
+  <br>
+  <div class="form-group col-lg-6">
+  <label>address</label>
+  <input type="text" id="add" class="form-control" name="address">
+  </div>
+  <br>
+  <div class="form-group col-lg-6">
+  <label>state</label>
+  <input type="text" id="state" class="form-control" name="state">
+  </div>
+  <br>
+  <div class="form-group col-lg-6">
+  <label>city</label>
+  <input type="text" id="city" class="form-control" name="city">
+ </div> 
+ <br>
+  <div class="form-group col-lg-6">
+  <label>mobile</label>
+  <input type="text" id="mobile"  class="form-control" name="mobile">
+  </div>
+  <br>
+  <div class="form-group col-lg-6">
+  <label>email</label>
+  <input type="text" id="email" class="form-control" name="email">
+  </div>
+  <div class="form-group col-lg-6">
+  <label>Password</label>
+  <input type="password" id="pwd" class="form-control" name="pwd">
+  </div>
+  <br>
+  <br>
+                            </div>
+                            <div>
+                                <button class="btn btn-warning">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- jQuery -->
+        <script src="assets/plugins/jQuery/jquery-1.12.4.min.js" type="text/javascript"></script>
+        <!-- bootstrap js -->
+        <script>
+  var data=<%-dat%>;
+  console.log(data);
+document.getElementById("ai").value=data[0].aadharno;
+document.getElementById("n").value=data[0].name;
+document.getElementById("fn").value=data[0].father_name;
+document.getElementById("gen").value=data[0].gender;
+document.getElementById("dob").value=data[0].dob;
+document.getElementById("add").value=data[0].address;
+document.getElementById("state").value=data[0].state;
+document.getElementById("city").value=data[0].city;
+document.getElementById("mobile").value=data[0].mobile;
+document.getElementById("email").value=data[0].email;	  
+ </script>
+		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    </body>
+</html>

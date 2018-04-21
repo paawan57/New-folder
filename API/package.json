@@ -1,0 +1,21 @@
+{
+  "name": "samplerest",
+  "version": "1.0.0",
+  "description": "this is api sample",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gullu",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "formidable": "^1.1.1",
+    "jquery": "^3.3.1",
+    "mysql": "^2.15.0",
+    "request": "^2.85.0",
+    "sync": "^0.2.5"
+  }
+}
