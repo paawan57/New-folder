@@ -5,6 +5,6 @@ exports.dbConfig={
 	database:"truerights",
 };
 
-exports.webPort=9000;
+exports.webPort=8082;
 
 exports.httpMsgsFormat="HTML";
