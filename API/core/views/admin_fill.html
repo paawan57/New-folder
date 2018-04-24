@@ -54,14 +54,14 @@
                 iCnt1 = iCnt1 + 1;
 
                 // ADD TEXTBOX.
-                $(container).append('<select  name=Rule'+iCnt1+' class="input" id=rl' + iCnt1 + ' ' +
+                $(container).append('<select  name=test'+iCnt1+' class="input" id=rl' + iCnt1 + ' ' +
                     ' ><option value="age">age</option><option value="game">game</option><option value="income">income</option></select>');    
                 $(container).append('<select  name=operator'+iCnt1+' class="input" id=rl' + iCnt1 + ' ' +
                     ' ><option value="<="><=</option><option value=">=">>=</option><option value="==">==</option></select>');
                 
-                  $(container).append('<input type=text name=value'+iCnt1+' placeholder=value class="input" id=rl' + iCnt1 + ' ' +
+                  $(container).append('<input type=text name=answer'+iCnt1+' placeholder=value class="input" id=rl' + iCnt1 + ' ' +
                     ' /><br><br>');
-                 $(container).append('<input type=hidden  name=no_of_schemes value=' +iCnt1+ '  />');
+                 $(container).append('<input type=hidden  name=no_of_rules value=' +iCnt1+ '  />');
 
                 // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
                 
@@ -82,7 +82,7 @@
         $('#btRemove1').click(function() {
             if (iCnt1 != 0) { $('#rl' + iCnt1).remove();$('#rl' + iCnt1).remove();$('#rl' + iCnt1).remove(); iCnt1 = iCnt1 - 1;
                            
-                            $(container).append('<input type=hidden  name=no_of_schemes value=' +iCnt1+ '  />');
+                            $(container).append('<input type=hidden  name=no_of_rules value=' +iCnt1+ '  />');
                            
                            }
         
@@ -106,7 +106,7 @@
 
            
             iCnt1 = 0; 
-             $(container).append('<input type=hidden  name=no_of_schemes value=' +iCnt1+ '  />');
+             $(container).append('<input type=hidden  name=no_of_rules value=' +iCnt1+ '  />');
             
             $('#btAdd1')
                 .removeAttr('disabled') 
@@ -244,7 +244,7 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <form action="http://127.0.0.1:8081/User_admin_fill" method="POST" id="loginForm" novalidate="">
+                        <form action="/User_admin_fill" method="POST" id="loginForm" novalidate="">
                             <div class="row">
                                 <div class="form-group col-lg-6">
                                     <label>TYPE</label>

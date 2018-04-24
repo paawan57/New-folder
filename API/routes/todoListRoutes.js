@@ -1,4 +1,5 @@
 var db=require("../core/db");
+var fs=require('fs');
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 exports.route = function(app) {
@@ -160,6 +161,27 @@ app.post('/User_admin_fill', urlencodedParser, function (req, res) {
                
     db.executeSql('insert into scheme_amt(w_id,category,amount,type) values(\''+req.body.w_id+'\',\''+req.body['scheme'+i]+'\',\''+req.body['amount'+i]+'\',\''+req.body.type+'\')',function(res,err){
                    if (err) throw err;
+	var l=req.body.no_of_rules.length;
+    console.log(req.body['answer'+l]);
+	var cond="";
+	for(i=1;i<=l;i++)
+	{
+		
+       if(i!=l)
+      {
+      	cond += '{"'+req.body["operator"+i]+'"'+':[{"var" : "'+req.body["test"+i]+'"},'+req.body["answer"+i]+']}'+' , ';
+      }
+
+	   else
+	   {
+	   	cond += '{"'+req.body["operator"+i]+'"'+':[{"var" : "'+req.body["test"+i]+'"},'+req.body["answer"+i]+']}';
+	   }
+	}	  
+   var json='{"and":['+cond+']}'
+   fs.appendFile('./rules_data/'+req.body.w_name+'.json',json,function(err){
+   console.log('done');
+   });	
+				   
                }); 
                
                
