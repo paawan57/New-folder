@@ -37,84 +37,6 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
     <script>
-        
-        $(document).ready(function() {
-
-        var iCnt1 = 0;
-        // CREATE A "DIV" ELEMENT AND DESIGN IT USING jQuery ".css()" CLASS.
-        var container = $(document.createElement('div')).css({
-            padding: '5px', margin: '20px', width: '170px', border: '1px dashed',
-            borderTopColor: '#999', borderBottomColor: '#999',
-            borderLeftColor: '#999', borderRightColor: '#999'
-        });
-
-        $('#btAdd1').click(function() {
-            if (iCnt1 <= 19) {
-
-                iCnt1 = iCnt1 + 1;
-
-                // ADD TEXTBOX.
-                $(container).append('<select  name=Rule'+iCnt1+' class="input" id=rl' + iCnt1 + ' ' +
-                    ' ><option value="age">age</option><option value="game">game</option><option value="income">income</option></select>');    
-                $(container).append('<select  name=operator'+iCnt1+' class="input" id=rl' + iCnt1 + ' ' +
-                    ' ><option value="<="><=</option><option value=">=">>=</option><option value="==">==</option></select>');
-                
-                  $(container).append('<input type=text name=value'+iCnt1+' placeholder=value class="input" id=rl' + iCnt1 + ' ' +
-                    ' /><br><br>');
-                 $(container).append('<input type=hidden  name=no_of_schemes value=' +iCnt1+ '  />');
-
-                // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
-                
-
-                // ADD BOTH THE DIV ELEMENTS TO THE "main" CONTAINER.
-                $('#main1').after(container);
-            }
-            // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
-            // (20 IS THE LIMIT WE HAVE SET)
-            else {      
-                $(container).append('<label>Reached the limit</label>'); 
-                $('#btAdd1').attr('class', 'bt-disable'); 
-                $('#btAdd1').attr('disabled', 'disabled');
-            }
-        });
-
-        // REMOVE ONE ELEMENT PER CLICK.
-        $('#btRemove1').click(function() {
-            if (iCnt1 != 0) { $('#rl' + iCnt1).remove();$('#rl' + iCnt1).remove();$('#rl' + iCnt1).remove(); iCnt1 = iCnt1 - 1;
-                           
-                            $(container).append('<input type=hidden  name=no_of_schemes value=' +iCnt1+ '  />');
-                           
-                           }
-        
-            if (iCnt1 == 0) { 
-                $(container)
-                    .empty() 
-                    .remove(); 
-
-             
-                $('#btAdd1')
-                    .removeAttr('disabled') 
-                    .attr('class', 'bt');
-            }
-        });
-
-        // REMOVE ALL THE ELEMENTS IN THE CONTAINER.
-        $('#btRemoveAll1').click(function() {
-            $(container)
-                .empty()
-                .remove(); 
-
-           
-            iCnt1 = 0; 
-             $(container).append('<input type=hidden  name=no_of_schemes value=' +iCnt1+ '  />');
-            
-            $('#btAdd1')
-                .removeAttr('disabled') 
-                .attr('class', 'bt');
-        });
-    });
-        
-        
       $(document).ready(function() {
 
         var iCnt = 0;
@@ -274,13 +196,7 @@
                                      <input type="text" value="" id="max_reg" class="form-control" name="max_reg">
                                     <span class="help-block small"></span>
                                 </div>
-                                <div class="form-group col-lg-6">
-                                     <div id="main1">
-        <input type="button" id="btAdd1" value="Add Rule" class="bt" />
-        <input type="button" id="btRemove1" value="Remove Rule" class="bt" />
-        <input type="button" id="btRemoveAll1" value="Remove All" class="bt" /><br />
-                           </div>
-                                </div>
+                               
                                 <div class="form-group col-lg-6">
                                      <div id="main">
         <input type="button" id="btAdd" value="Add Scheme" class="bt" />

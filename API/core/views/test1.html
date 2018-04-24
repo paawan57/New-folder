@@ -1,0 +1,150 @@
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Voting</title>
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/dist/img/ico/favicon.png" type="image/x-icon">
+        <link rel="apple-touch-icon" type="image/x-icon" href="assets/dist/img/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="assets/dist/img/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="assets/dist/img/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="assets/dist/img/ico/apple-touch-icon-144-precomposed.png">
+    <style>
+#demo {
+    
+  text-align: center;
+  font-size: 60px;
+}
+</style>
+
+
+        <!-- Bootstrap -->
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <!-- bootstrap js -->
+        <script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        
+    
+         
+    <script>
+             
+               $(document).ready( function() {
+                   var i;
+				 
+            
+                   <% for(var i=0; i<data.length; i++){%>
+                                                  var  radioBtn= $ ( ' <input type="radio" name="candidate" value="<%= data[i].w_id%>" /><p> <%= data[i].w_id + ' '+ data[i].w_name %></p>'
+												                   
+																   
+																   )  
+                                                                     
+                                                                  
+                                                        
+                                                    if("<%=data[i].type%>"=='Education')
+                                                         var x= document.getElementById('education');   
+                                                       else if("<%=data[i].type%>"=='Bussiness')
+                                                         var x= document.getElementById('bussiness');  
+                                                        else if("<%=data[i].type%>"=='Sports')
+                                                         var x= document.getElementById('sports');   
+                                                  radioBtn.appendTo(x);
+                                   
+                                                <%}%>
+            
+                   
+                  
+                   
+                         });  
+            
+          </script>
+        <!-- Bootstrap -->
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">    
+        <link href="assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" type="text/css">
+        
+        <link href="assets/dist/css/styleBD.css" rel="stylesheet" type="text/css">
+        <!-- Theme style rtl -->
+        <!--<link href="assets/dist/css/styleBD-rtl.css" rel="stylesheet" type="text/css"/>-->
+    
+        <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <!-- Bootstrap rtl -->
+        <!--<link href="assets/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet" type="text/css"/>-->
+        <!-- Pe-icon-7-stroke -->
+        <link href="assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" type="text/css">
+        <!-- style css -->
+        <link href="assets/dist/css/styleBD.css" rel="stylesheet" type="text/css">
+        <!-- Theme style rtl -->
+        <!--<link href="assets/dist/css/styleBD-rtl.css" rel="stylesheet" type="text/css"/>-->
+    </head>
+    <body>
+        <!-- Content Wrapper -->
+       
+        
+        <div class="login-wrapper" id="full-body">
+         
+
+            <div class="container-center lg" style="width:90%;max-width:1000px">
+                   <p id="demo"></p>
+
+
+                <div class="panel panel-bd" style="height:90%;width:90%">
+                    <div class="panel-heading">
+                        <div class="view-header">
+                           
+                            <div class="header-title">
+                                <h3>
+                                   Preffered Welfare Schemes
+                                </h3>
+                                <small><strong></strong></small>
+                            </div>
+                        </div>
+                    </div>
+                    <% if(data.length > 0) {%>
+                        <div class="panel-body">
+                             
+                            <form action="/apply" method="POST" id="loginForm" novalidate="">
+                                    <div class="row">
+                                  
+                                        <div class="form-group col-lg-12">
+                                            <label>Select the scheme </label><div id="theCount"></div>
+                                           
+                                            <span class="help-block small"></span>
+                                        </div>
+                                       
+                                        <div class="form-group col-lg-6">
+                                            <div id="education">
+                                                <h3>Education</h3>
+                                              
+                                              
+                                            </div>
+                                             <div id="bussiness">
+                                              <h3>Bussiness</h3>
+                                              
+                                            </div>
+                                             <div id="sports">
+                                              <h3>Sports</h3>
+                                            </div>
+                                        </div>
+                                        
+        
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-warning" style="float:left;margin:10px;"  type="submit">Apply</button>
+                                        
+                                    </div>
+                                    
+                                    
+                                </form>
+                            </div>
+                        <%}%>
+
+                </div>
+            </div>
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- jQuery -->
+        
+      
+    
+    
+</body></html>

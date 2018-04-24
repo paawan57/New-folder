@@ -174,6 +174,25 @@ app.post('/User_admin_fill', urlencodedParser, function (req, res) {
     });
   });
 
+  app.post('/view_scheme', function (req, res) {
+  console.log("CONNECTION ESTABLISHED\nyou can start your query now");
+
+  db.executeSql('select * from welfare ', function (result, err) {
+      console.log(result);
+    if (err) throw err;
+    if (result.length != 0) {
+      
+        res.render('test1.html', { data:result});
+    }
+    else {
+      console.log("you are not authorized to access");
+      res.render('register.html');
+
+
+    }
+  });
+});
+  
 };
   console.log("CONNECTION ESTABLISHED\nyou can start your query now");
    
