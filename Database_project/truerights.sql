@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2018 at 10:10 AM
+-- Generation Time: Apr 25, 2018 at 08:19 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -77,8 +77,16 @@ CREATE TABLE IF NOT EXISTS `scheme_amt` (
   `w_id` int(11) DEFAULT NULL,
   `category` varchar(200) DEFAULT NULL,
   `amount` bigint(20) DEFAULT NULL,
+  `type` varchar(200) NOT NULL,
   KEY `w_id` (`w_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `scheme_amt`
+--
+
+INSERT INTO `scheme_amt` (`w_id`, `category`, `amount`, `type`) VALUES
+(103, 'Scholarship', 1000, 'Education');
 
 -- --------------------------------------------------------
 
@@ -106,7 +114,8 @@ CREATE TABLE IF NOT EXISTS `user_info` (
 
 INSERT INTO `user_info` (`aadhar`, `name`, `father_name`, `gender`, `dob`, `address`, `state`, `city`, `mobile`, `email`, `password`) VALUES
 (1, 'Prem Chopra', 'Suresh Chopra', 'male', '1996-03-01', 'geetanjali isntitute', 'Rajasthan', 'udaipur', '123456789', 'hk@gmail.com', 'qwerty'),
-(2, 'vinit gupta', 'Suresh gupta', 'male', '1996-07-01', 'geetanjali isntitute', 'Rajasthan', 'udaipur', '124356789', 'kj@gmail.com', 'op');
+(2, 'vinit gupta', 'Suresh gupta', 'male', '1996-07-01', 'geetanjali isntitute', 'Rajasthan', 'udaipur', '124356789', 'kj@gmail.com', 'op'),
+(3, 'Shivani Jain', 'hemant Jain', 'female', '1996-02-21', 'gujrat67', 'Gujrat', 'ahemdabad', '43567891', 'shivani@gmail.com', '123');
 
 -- --------------------------------------------------------
 
@@ -118,6 +127,7 @@ CREATE TABLE IF NOT EXISTS `welfare` (
   `w_id` int(11) NOT NULL,
   `w_name` varchar(200) NOT NULL,
   `type` varchar(200) NOT NULL,
+  `max_reg` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`w_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -126,9 +136,10 @@ CREATE TABLE IF NOT EXISTS `welfare` (
 -- Dumping data for table `welfare`
 --
 
-INSERT INTO `welfare` (`w_id`, `w_name`, `type`, `timestamp`) VALUES
-(101, 'Paawan yojna', 'schlorship', '2018-02-23 16:13:43'),
-(102, 'Prateek Yojana', 'schlorship', '2018-02-23 16:15:27');
+INSERT INTO `welfare` (`w_id`, `w_name`, `type`, `max_reg`, `timestamp`) VALUES
+(101, 'Paawan yojna', 'Education', 0, '2018-02-23 16:13:43'),
+(102, 'Prateek Yojana', 'Education', 0, '2018-02-23 16:15:27'),
+(103, 'vinit yojna', 'Education', 90, '2018-04-24 17:50:43');
 
 --
 -- Constraints for dumped tables

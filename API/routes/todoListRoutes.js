@@ -1,6 +1,11 @@
 var db=require("../core/db");
 var fs=require('fs');
+var jsonLogic=require('json-logic-js');
 var bodyParser = require('body-parser');
+
+  var ageCalculator = require('age-calculator');
+  let {AgeFromDateString, AgeFromDate} = require('age-calculator');
+ 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 exports.route = function(app) {
   var todoList = require('../controllers/beneficiars');
@@ -198,23 +203,54 @@ app.post('/User_admin_fill', urlencodedParser, function (req, res) {
 
   app.post('/view_scheme', function (req, res) {
   console.log("CONNECTION ESTABLISHED\nyou can start your query now");
-
+ sess = req.session;
+  if (sess.aadhar_id)
+  {
+	db.executeSql('select * from user_info where aadhar = '+sess.aadhar_id,function(ress,err){	
+	if (err) throw err;
   db.executeSql('select * from welfare ', function (result, err) {
-      console.log(result);
+      console.log(result); 
     if (err) throw err;
-    if (result.length != 0) {
-      
-        res.render('test1.html', { data:result});
-    }
-    else {
-      console.log("you are not authorized to access");
-      res.render('register.html');
-
-
-    }
+	var k=0;
+	var j=0;
+	var r=[];
+	for(var i=0;i<result.length;i++)
+	{
+		var obj=result[i];
+		console.log(result);
+		var rules;
+		var json_data;
+		fs.readFile('./rules_data/'+result[i].w_name+'.json', 'utf8', function (err, data) {
+		if (err) throw err;
+		rules = JSON.parse(data);
+		let ageFromString = new AgeFromDateString(ress[0].dob+'').age;
+        console.log("value from ageFromString", ageFromString);
+		ress.age=ageFromString;
+		json_data={ress};
+		var answer = jsonLogic.apply(rules, json_data);
+		console.log(answer);
+		if(answer==true)
+		{
+			console.log(obj);
+			r[k]=obj;
+			k++;
+		}
+		j++;
+		console.log(result.length);	
+		console.log(j);
+		if (result.length == j) {
+		console.log(r);
+        res.render('test1.html', { data:r});
+			}
+	    });
+		
+		
+	}
+    
   });
-});
-  
+	});
+  }
+});  
 };
   console.log("CONNECTION ESTABLISHED\nyou can start your query now");
    
