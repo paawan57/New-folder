@@ -225,7 +225,7 @@ app.post('/User_admin_fill', urlencodedParser, function (req, res) {
 		rules = JSON.parse(data);
 		let ageFromString = new AgeFromDateString(ress[0].dob+'').age;
         console.log("value from ageFromString", ageFromString);
-		ress.age=ageFromString;
+		ress[0].age=ageFromString;
 		json_data={ress};
 		var answer = jsonLogic.apply(rules, json_data);
 		console.log(answer);
