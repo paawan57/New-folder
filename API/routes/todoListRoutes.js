@@ -213,35 +213,39 @@ app.post('/User_admin_fill', urlencodedParser, function (req, res) {
 	var k=0;
 	var j=0;
 	var r=[];
+	var obj=[];
 	for(var i=0;i<result.length;i++)
 	{
-		var obj=result[i];
-		console.log(result);
+		obj[j]=result[i];
+		console.log("result"+JSON.stringify(result[i]));
 		var rules;
 		var json_data;
-		fs.readFile('./rules_data/'+result[i].w_name+'.json', 'utf8', function (err, data) {
-		if (err) throw err;
+		data=fs.readFileSync('./rules_data/'+result[i].w_name+'.json', 'utf8') 
+		//if (err) throw err;
 		rules = JSON.parse(data);
 		let ageFromString = new AgeFromDateString(ress[0].dob+'').age;
-        console.log("value from ageFromString", ageFromString);
+        //console.log("value from ageFromString", ageFromString);
 		ress[0].age=ageFromString;
 		json_data={ress};
-		var answer = jsonLogic.apply(rules, json_data);
+		//console.log("data :"+ress[0].income);
+		//console.log("check:"+JSON.stringify(ress[0]));
+		var answer = jsonLogic.apply(rules,(JSON.stringify(ress[0])));
 		console.log(answer);
-		if(answer==true)
+		if(answer===false)
 		{
-			console.log(obj);
-			r[k]=obj;
+			console.log(obj[j]);
+			console.log(j);
+			r[k]=obj[j];
 			k++;
 		}
 		j++;
 		console.log(result.length);	
-		console.log(j);
+		
 		if (result.length == j) {
-		console.log(r);
+		console.log("true "+r);
         res.render('test1.html', { data:r});
 			}
-	    });
+	    
 		
 		
 	}
