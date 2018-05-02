@@ -99,8 +99,7 @@ app.get('/user_profile', function (req, res) {
 
 
 app.post('/user_register', urlencodedParser, function (req, res) {
-	var sql='insert into user_info(aadhar,name,father_name,gender,dob,address,state,city,mobile,email,password)values(\'' + req.body.Aadharno + '\',\'' + req.body.Name + '\',\'' + req.body.fathername + '\',\'' + req.body.gender + '\',\'' + req.body.dob + '\',\'' + req.body.address + '\',\'' + req.body.state + '\',\'' + req.body.city + '\',\'' + req.body.mobile + '\',\'' + req.body.email + '\',\'' + req.body.pwd + '\')';
-	
+	var sql='insert into user_info(aadhar,name,father_name,gender,dob,address,state,city,mobile,email,password,income,caste,business,sportsmen,X,XII,graduation)values(\'' + req.body.Aadharno + '\',\'' + req.body.Name + '\',\'' + req.body.fathername + '\',\'' + req.body.gender + '\',\'' + req.body.dob + '\',\'' + req.body.address + '\',\'' + req.body.state + '\',\'' + req.body.city + '\',\'' + req.body.mobile + '\',\'' + req.body.email + '\',\'' + req.body.pwd + '\',\'' + req.body.income + '\',\'' + req.body.caste+ '\',\'' + req.body.business + '\',\'' + req.body.sportsmen+ '\',\'' + req.body.X + '\',\'' + req.body.XII + '\',\'' + req.body.graduation + '\')';
     db.executeSql(sql, function (result, err) {
       console.log(result);
       if (err) throw err;
