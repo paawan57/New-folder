@@ -138,6 +138,22 @@ app.post('/User_admin', urlencodedParser, function (req, res) {
 
 });
   
+    
+    
+app.get('/logout',function(req,res){
+
+    
+    
+    req.session.destroy(function(err) {
+  if(err) {
+    console.log(err);
+  } else {
+    res.redirect('/');
+  }
+});
+
+});
+    
   app.get('/lockscreen', function (req, res) {
   sess = req.session;
   if (sess.aadhar_id) {
